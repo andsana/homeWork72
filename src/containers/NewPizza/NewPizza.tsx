@@ -3,8 +3,8 @@ import {useNavigate} from 'react-router-dom';
 import {useAppDispatch, useAppSelector} from '../../api/hooks';
 import {ApiPizza} from '../../types';
 import PizzaForm from '../../components/PizzaForm/PizzaForm';
-import {selectCreateLoading} from '../../store/pizzasSlise';
-import {createPizza} from '../../store/pizzasThunks';
+import {selectCreateLoading} from '../../store/pizzas/pizzasSlise';
+import {createPizza} from '../../store/pizzas/pizzasThunks';
 
 
 const NewPizza: React.FC = () => {
@@ -14,7 +14,7 @@ const NewPizza: React.FC = () => {
 
   const onSubmit = async (pizza: ApiPizza) => {
    await dispatch(createPizza(pizza));
-    navigate('/');
+    navigate('/admin/pizzas');
   };
 
   return (

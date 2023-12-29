@@ -1,7 +1,7 @@
-import {ApiPizza, Pizza} from '../types';
+import {ApiPizza, Pizza} from '../../types';
 import {createPizza, deletePizza, fetchOnePizza, fetchPizzas, updatePizza} from './pizzasThunks';
 import {createSlice} from '@reduxjs/toolkit';
-import {RootState} from "../api/store";
+import {RootState} from '../../api/store';
 
 interface PizzasState {
   items: Pizza[];
@@ -11,6 +11,7 @@ interface PizzasState {
   createLoading: boolean;
   updateLoading: boolean;
   deleteLoading: false | string;
+  showModal: boolean;
 }
 
 const initialState: PizzasState = {
@@ -21,12 +22,17 @@ const initialState: PizzasState = {
   createLoading: false,
   updateLoading: false,
   deleteLoading: false,
+  showModal: false,
 };
 
 export const pizzasSlice = createSlice({
   name: 'pizzas',
   initialState,
-  reducers: {},
+  reducers: {
+    showModal: (state) => {
+      state.showModal = !state.showModal;
+    },
+  },
   extraReducers: (builder) => {
     builder.addCase(fetchPizzas.pending, (state) => {
       state.fetchLoading = true;
@@ -90,4 +96,9 @@ export const selectFetchOneLoading = (state: RootState) => state.pizzas.fetchOne
 export const selectCreateLoading = (state: RootState) => state.pizzas.createLoading;
 export const selectUpdateLoading = (state: RootState) => state.pizzas.updateLoading;
 export const selectDeleteLoading = (state: RootState) => state.pizzas.deleteLoading;
+
+export const {showModal} = pizzasSlice.actions;
+export const selectShowModal = (state: RootState) => state.pizzas.showModal;
+
+
 

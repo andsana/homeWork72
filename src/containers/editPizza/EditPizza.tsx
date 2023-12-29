@@ -1,7 +1,7 @@
 import {useNavigate, useParams} from 'react-router-dom';
 import {useAppDispatch, useAppSelector} from '../../api/hooks';
-import {selectFetchOneLoading, selectPizza, selectUpdateLoading} from '../../store/pizzasSlise';
-import {fetchOnePizza, updatePizza} from '../../store/pizzasThunks';
+import {selectFetchOneLoading, selectPizza, selectUpdateLoading} from '../../store/pizzas/pizzasSlise';
+import {fetchOnePizza, updatePizza} from '../../store/pizzas/pizzasThunks';
 import {useEffect} from 'react';
 import Spinner from '../../components/Spinner/Spinner';
 import PizzaForm from '../../components/PizzaForm/PizzaForm';
@@ -21,7 +21,7 @@ const EditPizza = () => {
 
   const onSubmit = async (pizza: ApiPizza) => {
     await dispatch(updatePizza({id, pizza}));
-    navigate('/');
+    navigate('/admin/pizzas');
   };
 
   let formSection = <Spinner/>;

@@ -1,12 +1,11 @@
 import React, {useState} from 'react';
-
 import {ApiPizza, PizzaMutation} from '../../types';
 import ButtonSpinner from '../Spinner/ButtonSpinner';
 
 const initialState: PizzaMutation = {
-    title: '',
-    image: '',
-    price: '',
+  title: '',
+  image: '',
+  price: '',
 };
 
 interface Props {

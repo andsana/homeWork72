@@ -1,7 +1,7 @@
 import {createAsyncThunk} from '@reduxjs/toolkit';
-import {ApiPizza, Pizza, PizzasList} from '../types';
-import axiosApi from '../axiosApi';
-import {AppDispatch} from '../api/store';
+import {ApiPizza, Pizza, PizzasList} from '../../types';
+import axiosApi from '../../axiosApi';
+import {AppDispatch} from '../../api/store';
 
 export const createPizza = createAsyncThunk<void, ApiPizza, { dispatch: AppDispatch }>(
   'pizzas/create',
@@ -11,10 +11,10 @@ export const createPizza = createAsyncThunk<void, ApiPizza, { dispatch: AppDispa
   }
 );
 
-export const fetchPizzas = createAsyncThunk<Pizza[]>(
+export const fetchPizzas = createAsyncThunk<Pizza[], undefined>(
   'pizzas/fetchPizzas',
   async () => {
-    const pizzasResponse = await axiosApi.get<PizzasList | null>('/admin/pizzas.json');
+    const pizzasResponse = await axiosApi.get<PizzasList | null>('/pizzas.json');
     const pizzas = pizzasResponse.data;
 
     let newPizzas: Pizza[] = [];
@@ -35,7 +35,7 @@ export const fetchPizzas = createAsyncThunk<Pizza[]>(
 export const fetchOnePizza = createAsyncThunk<ApiPizza, string>(
   'pizzas/fetchOne',
   async (pizzaId) => {
-    const response = await axiosApi.get<ApiPizza | null>(`/admin/pizzas/${pizzaId}.json`);
+    const response = await axiosApi.get<ApiPizza | null>(`/pizzas/${pizzaId}.json`);
     const pizza = response.data;
 
     if (pizza === null) {
@@ -53,7 +53,7 @@ interface UpdatePizzaParams {
 export const updatePizza = createAsyncThunk<void, UpdatePizzaParams, { dispatch: AppDispatch }>(  
   'pizzas/update',
   async ({id, pizza}, thunkAPI) => {
-    await axiosApi.put(`admin/pizzas/${id}.json`, pizza);
+    await axiosApi.put(`/pizzas/${id}.json`, pizza);
     await thunkAPI.dispatch(fetchPizzas());
   }
 );
@@ -61,7 +61,7 @@ export const updatePizza = createAsyncThunk<void, UpdatePizzaParams, { dispatch:
 export const deletePizza = createAsyncThunk<void, string, {dispatch: AppDispatch}>(
   'pizzas/delete',
   async (pizzaId, thunkAPI)=> {
-    await axiosApi.delete(`/admin/dishes/${pizzaId}.json`);
+    await axiosApi.delete(`/pizzas/${pizzaId}.json`);
     await thunkAPI.dispatch(fetchPizzas());
   }
 );

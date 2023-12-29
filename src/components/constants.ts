@@ -1,0 +1,1 @@
+export const DELIVERY: number = 150;

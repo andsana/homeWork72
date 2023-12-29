@@ -6,7 +6,6 @@ import PizzaForm from '../../components/PizzaForm/PizzaForm';
 import {selectCreateLoading} from '../../store/pizzas/pizzasSlise';
 import {createPizza} from '../../store/pizzas/pizzasThunks';
 
-
 const NewPizza: React.FC = () => {
   const navigate = useNavigate();
   const dispatch = useAppDispatch();

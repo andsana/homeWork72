@@ -1,6 +1,6 @@
-import Pizzas from '../../components/Pizzas/Pizzas';
+import Pizzas from '../Pizzas/Pizzas';
 import {useAppDispatch, useAppSelector} from '../../api/hooks';
-import Order from '../../components/Order/Order';
+import ModalOrder from '../../components/ModalOrder/ModalOrder';
 import {selectOrderTotal} from '../../store/cartSlice';
 import {showModal} from '../../store/pizzas/pizzasSlise';
 
@@ -17,7 +17,7 @@ const Home = () => {
           <button className="btn btn-primary ms-auto" onClick={() => dispatch(showModal())}>Checkout</button>
         </div>
       </div>
-      <Order/>
+      <ModalOrder/>
     </div>
   );
 };

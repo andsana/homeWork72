@@ -2,7 +2,7 @@ import React from 'react';
 import {useAppDispatch, useAppSelector} from '../../api/hooks';
 import {selectDeleteLoading} from '../../store/pizzas/pizzasSlise';
 import {Link} from 'react-router-dom';
-import ButtonSpinner from '../Spinner/ButtonSpinner';
+import ButtonSpinner from '../../components/Spinner/ButtonSpinner';
 import {deletePizza} from '../../store/pizzas/pizzasThunks';
 import {Pizza} from '../../types';
 import {addPizza, calculateOrderTotal} from '../../store/cartSlice';
@@ -43,7 +43,7 @@ const Pizza: React.FC<Props> = ({pizza}) => {
         </div>
         <div className="col-md-8 text-end">
           <div className="card-body d-flex gap-3 justify-content-end align-items-center">
-            <span>{pizza.price} KGS</span>
+            <strong>{pizza.price} KGS</strong>
             {isAdminPage && (
               <>
                 <button

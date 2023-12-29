@@ -88,6 +88,8 @@ export const pizzasSlice = createSlice({
   }
 });
 
+export const {showModal} = pizzasSlice.actions;
+export const selectShowModal = (state: RootState) => state.pizzas.showModal;
 export const pizzasReducer = pizzasSlice.reducer;
 export const selectPizzas = (state: RootState) => state.pizzas.items;
 export const selectFetchLoading = (state: RootState) => state.pizzas.fetchLoading;
@@ -97,8 +99,8 @@ export const selectCreateLoading = (state: RootState) => state.pizzas.createLoad
 export const selectUpdateLoading = (state: RootState) => state.pizzas.updateLoading;
 export const selectDeleteLoading = (state: RootState) => state.pizzas.deleteLoading;
 
-export const {showModal} = pizzasSlice.actions;
-export const selectShowModal = (state: RootState) => state.pizzas.showModal;
+
+
 
 
 

@@ -1,7 +1,7 @@
 import {createSlice, PayloadAction} from '@reduxjs/toolkit';
 import {CartPizza, Pizza} from '../types';
 import {RootState} from '../api/store';
-import {postOrder} from './ordersThunks';
+import {postOrder} from './orders/ordersThunks';
 
 interface CartState {
   cartPizzas: CartPizza[];
@@ -59,7 +59,12 @@ export const cartSlice = createSlice({
 });
 
 export const cartReducer = cartSlice.reducer;
-export const {addPizza, deletePizzaOrder, clearCart, calculateOrderTotal} = cartSlice.actions;
+export const {
+  addPizza,
+  deletePizzaOrder,
+  clearCart,
+  calculateOrderTotal
+} = cartSlice.actions;
 export const selectCartPizzas = (state: RootState) => state.cart.cartPizzas;
 export const selectOrderTotal = (state: RootState) => state.cart.orderTotal;
 export const selectPostLoading = (state: RootState) => state.cart.postLoading;

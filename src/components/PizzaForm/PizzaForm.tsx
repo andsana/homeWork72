@@ -35,7 +35,7 @@ const PizzaForm: React.FC<Props> = ({onSubmit, existingPizza = initialState, isE
   };
 
   return (
-    <form onSubmit={onFormSubmit}>
+    <form onSubmit={onFormSubmit} style={{maxWidth: "500px"}}>
       <h4>{isEdit ? 'Edit pizza' : 'Add new Pizza'}</h4>
       <div className="form-group">
         <label htmlFor="name">Title</label>

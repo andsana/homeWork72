@@ -7,7 +7,7 @@ import React from 'react';
 import {selectCartPizzas, selectOrderTotal} from '../../store/cartSlice';
 import {selectShowModal, showModal} from '../../store/pizzas/pizzasSlise';
 
-const Order = () => {
+const ModalOrder = () => {
   const dispatch = useAppDispatch();
   const cartPizzas = useAppSelector(selectCartPizzas);
   const orderTotal = useAppSelector(selectOrderTotal);
@@ -69,4 +69,4 @@ const Order = () => {
     </>
   );
 };
-export default Order;
+export default ModalOrder;

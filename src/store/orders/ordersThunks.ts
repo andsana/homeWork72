@@ -1,8 +1,8 @@
 import {createAsyncThunk} from '@reduxjs/toolkit';
-import {ApiOrder, ApiOrders, Order} from '../types';
-import {AppDispatch} from '../api/store';
-import axiosApi from '../axiosApi';
-import {DELIVERY} from '../components/constants';
+import {ApiOrder, ApiOrders, Order} from '../../types';
+import {AppDispatch} from '../../api/store';
+import axiosApi from '../../axiosApi';
+import {DELIVERY} from '../../components/constants';
 
 export const postOrder = createAsyncThunk<void, ApiOrder, { dispatch: AppDispatch }>(
   'orders/post',
@@ -37,4 +37,11 @@ export const fetchOrders = createAsyncThunk<Order[]>(
 
     return ordersArr;
   }
+);
+export const deleteOrder = createAsyncThunk<void, string, {dispatch: AppDispatch}>(
+    'orders/delete',
+    async (orderId, thunkAPI)=> {
+        await axiosApi.delete(`/orders/${orderId}.json`);
+        await thunkAPI.dispatch(fetchOrders());
+    }
 );

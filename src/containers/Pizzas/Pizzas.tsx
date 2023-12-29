@@ -2,7 +2,7 @@ import {useEffect} from 'react';
 import {fetchPizzas} from '../../store/pizzas/pizzasThunks';
 import {useAppDispatch, useAppSelector} from '../../api/hooks';
 import {selectFetchLoading, selectPizzas} from '../../store/pizzas/pizzasSlise';
-import Spinner from '../Spinner/Spinner';
+import Spinner from '../../components/Spinner/Spinner';
 import Pizza from './Pizza';
 
 const Pizzas = () => {

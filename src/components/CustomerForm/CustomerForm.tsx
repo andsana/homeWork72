@@ -1,11 +1,10 @@
 import React, {useState} from 'react';
 import {Customer} from '../../types';
-import {postOrder} from '../../store/ordersThunks';
+import {postOrder} from '../../store/orders/ordersThunks';
 import {useAppDispatch, useAppSelector} from '../../api/hooks';
 import Spinner from '../Spinner/Spinner';
 import {calculateOrderTotal, clearCart, selectCartPizzas, selectPostLoading} from '../../store/cartSlice';
 import {showModal} from '../../store/pizzas/pizzasSlise';
-
 
 const initialState = {
   name: '',

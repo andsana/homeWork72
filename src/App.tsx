@@ -14,6 +14,7 @@ function App() {
         <Route path="/" element={<Home/>}/>
         <Route path="/admin/new-pizza" element={<NewPizza/>}/>
         <Route path="/admin/update-pizza/:id" element={<EditPizza/>}/>
+        <Route path="/admin" element={<Pizzas/>}/>
         <Route path="/admin/pizzas" element={<Pizzas/>}/>
         <Route path="/admin/orders" element={<Orders/>}/>
         <Route path="*" element={(<h1>Not Found!</h1>)}/>
